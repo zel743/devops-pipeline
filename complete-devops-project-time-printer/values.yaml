@@ -1,0 +1,15 @@
+image: 
+ repository: ziel249/complete-devops-project
+ tag: latest
+ pullpolicy: IfNotPresent
+service:
+ type: ClusterIP
+ port: 8080
+ingress: 
+ enabled: false
+serviceAccount:
+ enabled: false
+autoscaling: 
+ enabled: false
+
+
