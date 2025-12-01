@@ -26,3 +26,4 @@ jobs:
         run: |
           docker push ziel249/complete-devops-project:${{ env.SHORT_SHA }}
       
+      
