@@ -21,7 +21,7 @@ jobs:
           docker build -t ziel249/complete-devops-project:${{ env.SHORT_SHA }} .
       - name: Instalar Bandit
         run: |
-          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          #echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
       - name: Ejecutar Bandit
         run: |
           docker push ziel249/complete-devops-project:${{ env.SHORT_SHA }}
