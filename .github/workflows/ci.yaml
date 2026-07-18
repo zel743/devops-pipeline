@@ -11,25 +11,25 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Bandit SAST Scan
         uses: actions/checkout@v2
-      - name: Set Short SHA
+      - name: Checkout código
         run: |
           echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
-      - name: Build Docker Image
+      - name: Configurar Python
         run: |
           docker build -t ziel249/complete-devops-project:${{ env.SHORT_SHA }} .
-      - name: Login to Dockerhub
+      - name: Instalar Bandit
         run: |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-      - name: Push to Dockerhub
+      - name: Ejecutar Bandit
         run: |
           docker push ziel249/complete-devops-project:${{ env.SHORT_SHA }}
-      - name: Configure Git Author
+      - name: Subir reporte de Bandit
         run: |
           git config --local user.email "hellow@zel743.com"
           git config --local user.name "zel743"
-      - name: Update Helm Chart with new images tag
+      - name: Django System Check
         run: |
           sed -i "s/tag:.*/tag: ${{ env.SHORT_SHA }}/" ./complete-devops-project-time-printer/values.yaml
           git add ./complete-devops-project-time-printer/values.yaml
