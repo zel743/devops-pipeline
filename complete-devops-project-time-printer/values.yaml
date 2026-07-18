@@ -1,6 +1,6 @@
 image: 
  repository: ziel249/complete-devops-project
- tag: 33f386d
+ tag: 314e644
  pullpolicy: IfNotPresent
 service:
  type: ClusterIP
